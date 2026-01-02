@@ -49,7 +49,7 @@ const App: React.FC = () => {
     // Encode message to base64 for safe URL transmission
     const encodedMsg = window.btoa(unescape(encodeURIComponent(generatedPoem)));
     const shareUrl = `${baseUrl}?to=${encodeURIComponent(recipient)}&msg=${encodedMsg}`;
-    
+
     navigator.clipboard.writeText(shareUrl).then(() => {
       setShowCopied(true);
       setTimeout(() => setShowCopied(false), 2000);
@@ -76,10 +76,10 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 relative overflow-hidden bg-pink-50">
       <FloatingHearts />
-      
+
       {/* Container Card */}
       <div className="z-10 w-full max-w-lg bg-white/80 backdrop-blur-md rounded-3xl shadow-xl p-8 border-4 border-pink-200 transition-all duration-500 transform hover:scale-[1.01]">
-        
+
         {state === AppState.INTRO && (
           <div className="space-y-6 text-center animate-in fade-in zoom-in duration-700">
             <div className="flex justify-center mb-4">
@@ -88,15 +88,15 @@ const App: React.FC = () => {
               </div>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-pink-600 font-cursive leading-tight">
-              Oopsie... <br/> Time for an Apology?
+              Oopsie... <br /> Time for an Apology?
             </h1>
             <p className="text-pink-400 font-medium">Let me help you say it in the cutest way possible!</p>
-            
+
             <form onSubmit={handleStartApology} className="space-y-4 text-left">
               <div>
                 <label className="block text-sm font-semibold text-pink-700 mb-1">To someone special:</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={recipient}
                   onChange={(e) => setRecipient(e.target.value)}
                   placeholder="E.g., My Bestie, Sweetheart..."
@@ -106,7 +106,7 @@ const App: React.FC = () => {
               </div>
               <div>
                 <label className="block text-sm font-semibold text-pink-700 mb-1">Why are we sorry?</label>
-                <textarea 
+                <textarea
                   value={reason}
                   onChange={(e) => setReason(e.target.value)}
                   placeholder="I forgot our anniversary, I ate your cake..."
@@ -114,7 +114,7 @@ const App: React.FC = () => {
                   required
                 />
               </div>
-              <button 
+              <button
                 type="submit"
                 disabled={isLoading}
                 className="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-pink-200 transition-all flex items-center justify-center gap-2 group disabled:opacity-50"
@@ -149,8 +149,8 @@ const App: React.FC = () => {
               <div className="mt-4 text-right font-cursive text-pink-500">
                 — Your favorite human
               </div>
-              
-              <button 
+
+              <button
                 onClick={handleShare}
                 className="absolute top-2 right-2 p-2 rounded-full text-pink-400 hover:text-pink-600 hover:bg-pink-50 transition-all"
                 title="Copy share link"
@@ -167,14 +167,14 @@ const App: React.FC = () => {
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-pink-600">Will you forgive me, {recipient}? 🥺</h3>
               <div className="flex flex-col md:flex-row gap-4 justify-center items-center h-20 relative">
-                <button 
+                <button
                   onClick={() => setState(AppState.FORGIVEN)}
                   className="bg-green-400 hover:bg-green-500 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:scale-110 transition-transform z-20"
                 >
                   YES! 💖
                 </button>
-                
-                <button 
+
+                <button
                   onMouseEnter={moveNoButton}
                   onClick={moveNoButton}
                   style={noButtonCount > 0 ? {
@@ -199,14 +199,14 @@ const App: React.FC = () => {
               YAY! Best Day Ever!
             </h1>
             <p className="text-pink-600 text-lg">
-              I promise to be on my best behavior from now on! You're the best, {recipient}! 
+              I promise to be on my best behavior from now on! You're the best, {recipient}!
             </p>
             <div className="flex justify-center gap-2">
               <Heart className="text-pink-500 fill-pink-500 animate-pulse" />
               <Heart className="text-pink-400 fill-pink-400 animate-pulse delay-75" />
               <Heart className="text-pink-300 fill-pink-300 animate-pulse delay-150" />
             </div>
-            <button 
+            <button
               onClick={reset}
               className="mt-8 text-pink-400 hover:text-pink-600 text-sm font-medium flex items-center justify-center gap-1 mx-auto"
             >
