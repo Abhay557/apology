@@ -48,7 +48,7 @@ const App: React.FC = () => {
     const baseUrl = window.location.origin + window.location.pathname;
     // Encode message to base64 for safe URL transmission
     const encodedMsg = window.btoa(unescape(encodeURIComponent(generatedPoem)));
-    const shareUrl = `${baseUrl}?to=${encodeURIComponent(recipient)}&msg=${encodedMsg}`;
+    const shareUrl = `${baseUrl}?to=${encodeURIComponent(recipient)}&msg=${encodeURIComponent(encodedMsg)}`;
 
     navigator.clipboard.writeText(shareUrl).then(() => {
       setShowCopied(true);
